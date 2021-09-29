@@ -56,7 +56,7 @@ python tools/demo.py image -n yolov3 -c weights/yolox_darknet.pth --path assets/
 ***从预测图可以看出，不同类别被正确框选出来，且预测正确，具有较高的置信度。***
 
 # 复现结果
-* 网络结构与原论文基本一致，结果保存在 compare 文件夹下的 paddle_model.txt 和 torch_model.txt 文件中
+* 复现网络结构与原论文基本一致，结果保存在 compare 文件夹下的 paddle_model.txt 和 torch_model.txt 文件中
 
 * 单卡训练命令可以运行，随着 iter 的迭代 loss 会下降，训练命令如下
 
@@ -70,6 +70,10 @@ python tools/demo.py image -n yolov3 -c weights/yolox_darknet.pth --path assets/
 * ***前向对齐存在问题，结果保存在 compare 文件夹下的 paddle_forward.txt 和 torch_forward.txt 文件中，对比两个文件可以发现，从 CSPDarknet 的 dark2 开始，结果就出现了数量级上的差异，导致最终结果相差甚远，甚至可能出现 inf 使得程序意外终止，然而，我目前并没有找出问题所在，这也导致了 evaluate 不能实现，所以这次的复现没有成功***
 
 ![前向结果对比](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210929143957120.png)
+
+# AI Studio 链接
+
+[YOLOX_convert - 飞桨AI Studio - 人工智能学习实训社区 (baidu.com)](https://aistudio.baidu.com/aistudio/projectdetail/2385233)
 
 # Reference
 
