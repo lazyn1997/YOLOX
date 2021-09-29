@@ -54,3 +54,6 @@ python tools/demo.py image -n yolov3 -c weights/yolox_darknet.pth --path assets/
 ![dog](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/dog.jpg)
 
 ***从预测图可以看出，不同类别被正确框选出来，且预测正确，具有较高的置信度。***
+
+# 复现结果
+* 训练语句基本跑通，按照官方
