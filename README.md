@@ -1,7 +1,7 @@
 学习 YOLOX: Exceeding YOLO Series in 2021 论文，跑通原文demo代码及验证代码，并尝试使用飞桨框架复现。
 # 复现赛流程
 
-![](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210902090946941.png)
+![复现赛流程](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210902090946941.png)
 
 # 原论文代码实现
 
@@ -99,3 +99,4 @@ python tools/demo.py image -n yolov3 -c weights/yolox_darknet.pth --path assets/
 * [模型转换论文复现_潜沉10的博客-CSDN博客](https://blog.csdn.net/qq_32097577/category_10723518.html?spm=1001.2014.3001.5482)
 * [Issues · PaddlePaddle/Paddle (github.com)](https://github.com/PaddlePaddle/Paddle/issues)
 * [Issues · PaddlePaddle/X2Paddle (github.com)](https://github.com/PaddlePaddle/X2Paddle/issues)
+
