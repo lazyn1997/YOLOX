@@ -5,6 +5,9 @@
 
 # 原论文代码实现
 
+<details>
+
+
 ## 评估
 
 * YOLOX-s 模型评估
@@ -48,6 +51,8 @@ python tools/demo.py image -n yolov3 -c weights/yolox_darknet.pth --path assets/
 <img src="docs/images/dog.jpg" alt="dog" style="zoom:150%;" />
 
 ***从预测图可以看出，不同类别被正确框选出来，且预测正确，具有较高的置信度。***
+
+</details>
 
 # 复现结果
 * 复现网络结构与原论文基本一致，结果保存在 compare 文件夹下的 paddle_model.txt 和 torch_model.txt 文件中
