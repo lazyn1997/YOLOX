@@ -256,8 +256,8 @@ class Trainer:
 
             ckpt = paddle.load(ckpt_file)
             # resume the model/optimizer state dict
-            model.load_state_dict(ckpt["model"])
-            self.optimizer.load_state_dict(ckpt["optimizer"])
+            model.set_dict(ckpt["model"])
+            self.optimizer.set_dict(ckpt["optimizer"])
             # resume the training states variables
             start_epoch = (
                 self.args.start_epoch - 1

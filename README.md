@@ -1,7 +1,7 @@
 学习 YOLOX: Exceeding YOLO Series in 2021 论文，跑通原文demo代码及验证代码，并尝试使用飞桨框架复现。
 # 复现赛流程
 
-![复现赛流程](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210902090946941.png)
+![复现赛流程](.\docs\images\复现赛流程.png)
 
 # 原论文代码实现
 
@@ -13,13 +13,7 @@
 python tools/eval.py -n  yolox-s -c weights/yolox_s.pth -b 1 -d 1 --conf 0.001 --fp16 --fuse
 ```
 
-![image-20210906221549801](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210906221549801.png)![image-20210906221825351](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210906221825351.png)![image-20210906221335530](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210906221335530.png)
-
-```shell
-python tools/eval.py -n  yolox-s -c weights/yolox_s.pth -b 64 -d 8 --conf 0.001 [--fp16] [--fuse]
-```
-
-![image-20210906222920174](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210906222920174.png)![image-20210906222942514](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210906222942514.png)![image-20210906223003962](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210906223003962.png)
+![yolox-s](docs/images/yolox-s.png)
 
 * YOLOX-Darknet53 模型评估
 
@@ -27,7 +21,7 @@ python tools/eval.py -n  yolox-s -c weights/yolox_s.pth -b 64 -d 8 --conf 0.001 
 python tools/eval.py -n  yolov3 -c weights/yolox_darknet.pth -b 32 -d 1 --conf 0.001 [--fp16] [--fuse]
 ```
 
-![image-20210906223205780](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210906223205780.png)![image-20210906223312883](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210906223312883.png)![image-20210906223337128](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210906223337128.png)
+![YOLOX-Darknet53](docs/images/YOLOX-Darknet53.png)
 
 * 原论文结果
 
@@ -47,11 +41,11 @@ python tools/eval.py -n  yolov3 -c weights/yolox_darknet.pth -b 32 -d 1 --conf 0
 python tools/demo.py image -n yolov3 -c weights/yolox_darknet.pth --path assets/dog.jpg --conf 0.25 --nms 0.45 --tsize 640 --save_result --device gpu
 ```
 
-![image-20210906225440765](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210906225440765.png)
+![predict](docs/images/predict.png)
 
 * 预测结果
 
-![dog](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/dog.jpg)
+![dog](docs/images/dog.jpg)
 
 ***从预测图可以看出，不同类别被正确框选出来，且预测正确，具有较高的置信度。***
 
@@ -67,9 +61,17 @@ python tools/demo.py image -n yolov3 -c weights/yolox_darknet.pth --path assets/
                            yolox-x
   ```
 
-* ***前向对齐存在问题，结果保存在 compare 文件夹下的 paddle_forward.txt 和 torch_forward.txt 文件中，对比两个文件可以发现，从 CSPDarknet 的 dark2 开始，结果就出现了数量级上的差异，导致最终结果相差甚远，甚至可能出现 inf 使得程序意外终止，然而，我目前并没有找出问题所在，这也导致了 evaluate 不能实现，所以这次的复现没有成功***
+* ***前向对齐存在问题，应用 reprod_log 进行前向对齐测试，过程中发现 CSPDarknet 的 stem.BaseConv 和 dark2.BaseConv 具有同样的网络结构，然而 stem.BaseConv 部分前向对齐通过，dark2.BaseConv 部分前向对齐并未通过，我目前并没有找出问题所在，所以这次的复现没有成功***
 
-![前向结果对比](https://lazynnote.oss-cn-shenzhen.aliyuncs.com/typora/image-20210929143957120.png)
+![网络结构对比](docs/images/structure.png)
+
+**stem.BaseConv diff**
+
+![stem.BaseConv diff](docs/images/stem.BaseConv diff.png)
+
+**dark2.BaseConv diff**
+
+![dark2.BaseConv diff](docs/images/dark2.BaseConv diff.png)
 
 # AI Studio 链接
 

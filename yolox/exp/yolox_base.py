@@ -76,7 +76,7 @@ class Exp(BaseExp):
             for m in M.sublayers():
                 if isinstance(m, nn.BatchNorm2D):
                     m._epsilon = 1e-3
-                    m._momentum = 0.03
+                    m._momentum = 1 - 0.03
 
         if getattr(self, "model", None) is None:
             in_channels = [256, 512, 1024]
