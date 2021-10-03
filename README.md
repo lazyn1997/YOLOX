@@ -3,7 +3,8 @@
 
 ![复现赛流程](docs/images/复现赛流程.png)
 
-<details><summary># 原论文代码实现</summary>
+<details><summary><h1>原论文代码实现</h1></summary>
+
 ## 评估
 
 * YOLOX-s 模型评估
