@@ -1,9 +1,15 @@
 学习 YOLOX: Exceeding YOLO Series in 2021 论文，跑通原文demo代码及验证代码，并尝试使用飞桨框架复现。
 # 复现赛流程
 
+<details>
+
 ![复现赛流程](docs/images/复现赛流程.png)
 
-<details><summary><h1>原论文代码实现</h1></summary>
+</details>
+
+# 原论文代码实现
+
+<details>
 
 ## 评估
 
@@ -45,7 +51,7 @@ python tools/demo.py image -n yolov3 -c weights/yolox_darknet.pth --path assets/
 
 * 预测结果
 
-<img src="docs/images/dog.jpg" alt="dog" style="zoom:150%;" />
+<img src="docs/images/dog.jpg" alt="dog"  />
 
 ***从预测图可以看出，不同类别被正确框选出来，且预测正确，具有较高的置信度。***
 
@@ -63,15 +69,17 @@ python tools/train.py -n yolox-s -d 1 -b 8
                          yolox-x
 ```
 
-* ***前向对齐存在问题，应用 reprod_log 进行前向对齐测试，过程中发现 CSPDarknet 的 stem.BaseConv 和 dark2.BaseConv 具有同样的网络结构，然而 stem.BaseConv 部分前向对齐通过，dark2.BaseConv 部分前向对齐并未通过，我目前并没有找出问题所在，所以这次的复现没有成功***
+* ***前向对齐存在问题，目前尚不清楚原因***
+
+应用 reprod_log 进行前向对齐测试，过程中发现 CSPDarknet 的 stem.BaseConv 和 dark2.BaseConv 具有同样的网络结构，如下图所示
 
 ![网络结构对比](docs/images/structure.png)
 
-**stem.BaseConv diff**
+然而 stem.BaseConv 部分前向对齐通过，比对结果如下图所示
 
 ![stem.BaseConv_diff](docs/images/stem.BaseConv_diff.png)
 
-**dark2.BaseConv diff**
+dark2.BaseConv 部分前向对齐并未通过，比对结果如下图所示
 
 ![dark2.BaseConv_diff](docs/images/dark2.BaseConv_diff.png)
 
